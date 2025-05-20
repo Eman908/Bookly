@@ -1,3 +1,4 @@
+import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
@@ -46,21 +47,23 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
     );
     logoAnimation = Tween<Offset>(
       begin: const Offset(0, 10),
       end: Offset.zero,
-    ).animate(animationController);
+    ).animate(
+      CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+    );
     animationController.forward();
   }
 
   void navigateTransition() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.to(
+    Future.delayed(const Duration(seconds: 4), () {
+      Get.offAll(
         () => const HomeView(),
-        transition: Transition.downToUp,
-        duration: const Duration(seconds: 1),
+        transition: Transition.leftToRight,
+        duration: (kTransitionDuration),
       );
     });
   }
