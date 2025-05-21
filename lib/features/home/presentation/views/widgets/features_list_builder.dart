@@ -45,7 +45,7 @@ class _FeaturedListBuilderState extends State<FeaturedListBuilder> {
           return Transform.scale(
             scale: scale,
             child: const Padding(
-              padding: EdgeInsets.only(right: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               child: FeaturedItem(),
             ),
           );
