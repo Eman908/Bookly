@@ -13,6 +13,7 @@ class Bookly extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: kPrimaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
         textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
     );
