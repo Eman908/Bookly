@@ -9,7 +9,7 @@ class BookDetailCover extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * 0.25),
-      child: const AspectRatio(aspectRatio: 2.7 / 4, child: FeaturedItem()),
+      child: const AspectRatio(aspectRatio: 2.8 / 4, child: FeaturedItem()),
     );
   }
 }

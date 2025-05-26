@@ -1,6 +1,7 @@
 import 'package:bookly/core/constants.dart';
 import 'package:bookly/core/utils/app_routes.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/presentation/views/widgets/book_cover.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,18 +18,7 @@ class BestSellerItem extends StatelessWidget {
       child: Row(
         spacing: 30,
         children: [
-          SizedBox(
-            height: 130,
-            child: AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadiusDirectional.circular(8),
-                ),
-              ),
-            ),
-          ),
+          const BookCover(),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

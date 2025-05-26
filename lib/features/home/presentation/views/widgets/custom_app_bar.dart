@@ -1,6 +1,8 @@
+import 'package:bookly/core/utils/app_routes.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -14,7 +16,11 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Image.asset(AssetsData.logo, height: 18),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              if (context.mounted) {
+                context.go(AppRoutes.kSearchView);
+              }
+            },
             child: SvgPicture.asset(AssetsData.search),
           ),
         ],
