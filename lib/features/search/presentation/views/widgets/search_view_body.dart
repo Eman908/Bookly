@@ -1,6 +1,5 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/search/presentation/views/widgets/custom_input_field.dart';
-import 'package:bookly/features/search/presentation/views/widgets/search_list_builder.dart';
 import 'package:flutter/material.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -16,7 +15,7 @@ class SearchViewBody extends StatelessWidget {
         children: [
           CustomInputField(),
           Text('Search result', style: Styles.s15),
-          Expanded(child: SearchListBuilder()),
+          //Expanded(child: SearchListBuilder()),
         ],
       ),
     );

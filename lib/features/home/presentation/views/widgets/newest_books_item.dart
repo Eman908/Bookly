@@ -1,24 +1,25 @@
 import 'package:bookly/core/constants.dart';
 import 'package:bookly/core/utils/app_routes.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/books_model/books_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_cover.dart';
-import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/page_count.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+  const BestSellerItem({super.key, required this.booksModel});
+  final BooksModel booksModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(AppRoutes.kBookDetailsView);
+        context.go(AppRoutes.kBookDetailsView, extra: booksModel);
       },
       child: Row(
         spacing: 30,
         children: [
-          const BookCover(),
+          BookCover(image: booksModel.volumeInfo.imageLinks?.thumbnail),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,24 +28,28 @@ class BestSellerItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
-                    'Harry Potter and the Goblet of Fire',
+                    booksModel.volumeInfo.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.s20.copyWith(fontFamily: kGTSectraFine),
                   ),
                 ),
-                const Opacity(
+                Opacity(
                   opacity: 0.7,
-                  child: Text('J.K. Rowling', style: Styles.s14),
+                  child: Text(
+                    booksModel.volumeInfo.authors!.first,
+                    style: Styles.s14,
+                  ),
                 ),
                 Row(
                   children: [
                     Text(
-                      "19.99 \$",
+                      "Free",
                       style: Styles.s20.copyWith(fontWeight: FontWeight.w700),
                     ),
                     const Spacer(),
-                    const BookRating(),
+
+                    PageCount(count: booksModel.volumeInfo.pageCount),
                   ],
                 ),
               ],

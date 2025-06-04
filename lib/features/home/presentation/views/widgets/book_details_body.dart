@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data/models/books_model/books_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/actions_buttons.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_detail_cover.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_details_app_bar.dart';
@@ -6,25 +7,34 @@ import 'package:bookly/features/home/presentation/views/widgets/related_book_sec
 import 'package:flutter/material.dart';
 
 class BookDetailsBody extends StatelessWidget {
-  const BookDetailsBody({super.key});
-
+  const BookDetailsBody({super.key, required this.booksModel});
+  final BooksModel booksModel;
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
         SliverFillRemaining(
           hasScrollBody: false,
           child: Column(
             children: [
-              BookDetailsAppBar(),
-              BookDetailCover(),
-              SizedBox(height: 40),
-              BookInfo(),
-              SizedBox(height: 40),
-              ActionButtons(),
-              Expanded(child: SizedBox(height: 50)),
-              RelatedBooksSection(),
-              SizedBox(height: 40),
+              const BookDetailsAppBar(),
+              BookDetailCover(
+                image: booksModel.volumeInfo.imageLinks?.thumbnail ?? '',
+              ),
+              const SizedBox(height: 40),
+              BookInfo(
+                title: booksModel.volumeInfo.title!,
+                author: booksModel.volumeInfo.authors![0],
+                count: booksModel.volumeInfo.pageCount!,
+              ),
+              const SizedBox(height: 40),
+              ActionButtons(
+                url: booksModel.volumeInfo.previewLink!,
+                preview: booksModel.volumeInfo.previewLink!,
+              ),
+              const Expanded(child: SizedBox(height: 50)),
+              const RelatedBooksSection(),
+              const SizedBox(height: 40),
             ],
           ),
         ),
