@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/data/models/books_model/books_model.dart';
+import 'package:bookly/core/models/books_model/books_model.dart';
 import 'package:bookly/features/home/data/repo/home_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

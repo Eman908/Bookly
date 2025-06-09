@@ -77,7 +77,9 @@ class _FeaturedListBuilderState extends State<FeaturedListBuilder> {
             ),
           );
         } else if (state is FeaturedBooksFailed) {
-          return CustomErrorMessage(errMessage: state.errMessage);
+          return Center(
+            child: CustomErrorMessage(errMessage: state.errMessage),
+          );
         } else {
           return const CustomLoadingIndicator();
         }

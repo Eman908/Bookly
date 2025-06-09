@@ -17,7 +17,7 @@ class NewestBooksBuilder extends StatelessWidget {
             delegate: SliverChildBuilderDelegate((context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: BestSellerItem(booksModel: state.booksModel[index]),
+                child: NewestBooksItem(booksModel: state.booksModel[index]),
               );
             }, childCount: state.booksModel.length),
           );
